@@ -3,6 +3,12 @@
 
 **1. ¿Qué es un condicional?**  
 Un **condicional** en Python (y en general, en cualquier lenguaje de programación, ya que es una estructura universal en todos ellos) es una expresión sintáctica que permite ejecutar porciones (bloques) de código de Python dependiendo del cumplimiento de una o varias **condiciones**.  Este tipo de estructuras es fundamental para el desarrollo de aplicaciones, ya que nos permiten controlar el flujo del programa: le damos 'inteligencia' a una aplicación, al hacer que tome diferentes caminos dependiendo de las condiciones. Esto hace que la aplicación que hayamos desarrollado se comporte diferente dependiendo de la entrada que le suministremos. Podemos decir que este tipo de estructuras son el primer paso de **inteligencia artificial** que se dió en programación.
+Representándolo con un diagrama de flujo:  
+
+<div align="center">
+    <img src="imagenes/condicional.jpg" alt="Condicionales" width=550>
+</div>
+
 La sintaxis de las estructuras condicionales existentes en Python son 3
 
 **Sintaxis 1**  
@@ -110,8 +116,12 @@ Son muy útiles para:
 
 
  1. **Bucle 'for'**  
- El bucle **for** se usa para recorrer iterables (tipos de python compuestos de varios elementos) y ejecutar un bloque de código; iterables son los strings, las listas, las tuplas, los diccionarios, los rangos y los sets. El bucle **for** nos permite coger todos y cada uno de los elementos del iterable y aplicar un mismo bloque de código a cada uno de ellos.
+ El bucle **for** se usa para recorrer iterables (tipos de python compuestos de varios elementos) y ejecutar un bloque de código; iterables son los strings, las listas, las tuplas, los diccionarios, los rangos y los sets. El bucle **for** nos permite coger todos y cada uno de los elementos del iterable y aplicar un mismo bloque de código a cada uno de ellos.  
+ Representándolo con un diagrama de flujo:  
 
+<div align="center">
+    <img src="imagenes/for.jpg" alt="Bucle for" width=450>
+</div>
 
 Sintaxis
  ```python
@@ -162,7 +172,12 @@ for letra in palabra:
 En este caso el iterable es la palabra *Devcamp* y la variable es *letra*. El bucle **for** recorre la palabra letra por letra y para cada una de ellas realiza un salida por pantalla.
 
  2. **Bucle 'while'**  
- El bucle while nos permite ejecutar un bloque de código repetidamente mientras sea **verdadera** una cierta condición.  
+ El bucle while nos permite ejecutar un bloque de código repetidamente mientras sea **verdadera** una cierta condición.  Representándolo con un diagrama de flujo:  
+
+<div align="center">
+    <img src="imagenes/while.jpg" alt="Bucle while" width=450>
+</div>
+
 Sintaxis
  ```python
  while condición :
@@ -250,7 +265,7 @@ Cuando la variable *fruta* toma el valor *cereza*, se salta a la siguiente itera
 
 
 **4. Bucles anidados**  
-Hemos visto las dos estructuras de bucle, pero esto se puede hacer más complejo usando bucles anidados, donde insertamos un bucle dentro de otro bucle. Aunque esto es posible hacerlo, se recoomienda no abusar de este tipo de anidadaciones, ni de usar muchos niveles de anidación (bucle dentro de bucle dentro de bucle...) ya que hacen los programas más difíciles de leer, y por tanto de modificar y depurar.
+Hemos visto las dos estructuras de bucle, pero esto se puede hacer más complejo usando bucles anidados, donde insertamos un bucle dentro de otro bucle. Aunque esto es posible hacerlo, se recomienda no abusar de este tipo de anidadaciones, ni de usar muchos niveles de anidación (bucle dentro de bucle dentro de bucle dentro de bucle...) ya que hacen los programas más difíciles de entender, y por tanto de modificar y depurar.
 ```python
 for n in range(4) :
     for m in range(2 ):
