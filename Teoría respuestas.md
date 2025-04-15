@@ -1,7 +1,7 @@
 # Checkpoint nº 5: teoría
 
 
-**1. ¿Qué es un condicional?**  
+## 1. ¿Qué es un condicional?  
 Un **condicional** en Python (y en general, en cualquier lenguaje de programación, ya que es una estructura universal en todos ellos) es una expresión sintáctica que permite ejecutar porciones (bloques) de código de Python dependiendo del cumplimiento de una o varias **condiciones**.  Este tipo de estructuras es fundamental para el desarrollo de aplicaciones, ya que nos permiten controlar el flujo del programa: le damos 'inteligencia' a una aplicación, al hacer que tome diferentes caminos dependiendo de las condiciones. Esto hace que la aplicación que hayamos desarrollado se comporte diferente dependiendo de la entrada que le suministremos. Podemos decir que este tipo de estructuras son el primer paso de **inteligencia artificial** que se dió en programación.
 Representándolo con un diagrama de flujo:  
 
@@ -11,7 +11,7 @@ Representándolo con un diagrama de flujo:
 
 La sintaxis de las estructuras condicionales existentes en Python son 3
 
-**Sintaxis 1**  
+**Sintaxis 1**
 ```python
     if condición :  
         bloque a ejecutar si 'condición' es True
@@ -30,9 +30,8 @@ if name == 'Jon' :
     print(saludo)
 
 # Salida: Hola, Jon, puedes acceder como Superusuario'
-
 ```
-**Sintaxis 2**  
+**Sintaxis 2**
 ```python
     if condición :
         bloque1 (a ejecutar si 'condición' es True)
@@ -56,7 +55,7 @@ else :
 # Salida: Hola, no estás autorizado para acceder
 
 ```
-**Sintaxis 3**  
+**Sintaxis 3**
 ```python
     if condición1 :
         bloque a ejecutar si 'condición1'es True
@@ -103,19 +102,18 @@ En los 3 tipos de condicionales mencionados, si alguna de las condiciones es ver
 
 Resumiendo, las estructuras condicionales son estructuras fundamentales en Python (y en cualquier lenguaje de programación) ya que nos permiten ejecutar diferentes bloques de código dependiendo de que se den unas determinadas condiciones. Además, tenemos 3 tipos de estructuras condicionales en Python, lo que nos da mucha flexiblidad a la hora de elegir la más adecuada a la situación que queramos resolver.  
 
----
 
-**2. ¿Cuáles son los diferentes tipos de bucles en Python? ¿Por qué son útiles?**  
+## 2. ¿Cuáles son los diferentes tipos de bucles en Python? ¿Por qué son útiles?  
 Los bucles son estructuras de control fundamentales en programación, que nos permiten repetir la ejecución de un bloque de código en diferentes situaciones (iteración).  
 Son muy útiles para:  
 - Automatización: ejecutan una tarea repetidamente sin tener que escribir el mismo código varias veces.
 - Procesamiento de datos: permiten iterar sobre colecciones de datos (listas, tuplas, diccionarios, etc.) para realizar operaciones en cada elemento, realizando complejas operaciones con pocas líneas de código.
 - Creación de programas dinámicos: hacen que el programa se adapte a diferentes entradas y situaciones, repitiendo acciones según sea necesario.
 
- Existen 2 tipos de bucles en Python
+ Existen 2 tipos de bucles en Python, el bucle **for** y el **while**.
 
 
- 1. **Bucle 'for'**  
+ ### 1. Bucle 'for'
  El bucle **for** se usa para recorrer iterables (tipos de python compuestos de varios elementos) y ejecutar un bloque de código; iterables son los strings, las listas, las tuplas, los diccionarios, los rangos y los sets. El bucle **for** nos permite coger todos y cada uno de los elementos del iterable y aplicar un mismo bloque de código a cada uno de ellos.  
  Representándolo con un diagrama de flujo:  
 
@@ -123,7 +121,7 @@ Son muy útiles para:
     <img src="imagenes/for.jpg" alt="Bucle for" width=450>
 </div>
 
-Sintaxis
+**Sintaxis**
  ```python
 for variable in iterable :
     bloque de código a ejecutar  
@@ -171,14 +169,14 @@ for letra in palabra:
 ```
 En este caso el iterable es la palabra *Devcamp* y la variable es *letra*. El bucle **for** recorre la palabra letra por letra y para cada una de ellas realiza un salida por pantalla.
 
- 2. **Bucle 'while'**  
+ ### 2. Bucle 'while'  
  El bucle while nos permite ejecutar un bloque de código repetidamente mientras sea **verdadera** una cierta condición.  Representándolo con un diagrama de flujo:  
 
 <div align="center">
     <img src="imagenes/while.jpg" alt="Bucle while" width=450>
 </div>
 
-Sintaxis
+**Sintaxis**
  ```python
  while condición :
     bloque de código a ejecutar  
@@ -221,7 +219,7 @@ while  nombre_usuario != nombre_clave :
 ```
 En este caso, la condición para que se ejecute el bloque de código es que el nombre que teclea el usuario NO sea *Pedro*. Mientras no acierte con ese nombre, el sistema seguirá pidiéndole que teclee uno. Este podría ser el caso de un bucle infinito: para que este bucle deje de ejecutarse y el programa no se quede de forma infinita en este punto, el usuario debe acertar con el nombre (Pedro)
 
-**3. Control de bucles**
+### 3. Control de bucles
 
 Existen 2 sentencias que nos permiten modificar el comportamiento de los bucles **for** y **while** en Python
 
@@ -264,7 +262,7 @@ for fruta in frutas:
 Cuando la variable *fruta* toma el valor *cereza*, se salta a la siguiente iteración: por tanto 'cereza' no aparece por pantalla.
 
 
-**4. Bucles anidados**  
+### 4. Bucles anidados
 Hemos visto las dos estructuras de bucle, pero esto se puede hacer más complejo usando bucles anidados, donde insertamos un bucle dentro de otro bucle. Aunque esto es posible hacerlo, se recomienda no abusar de este tipo de anidadaciones, ni de usar muchos niveles de anidación (bucle dentro de bucle dentro de bucle dentro de bucle...) ya que hacen los programas más difíciles de entender, y por tanto de modificar y depurar.
 ```python
 for n in range(4) :
@@ -285,8 +283,8 @@ for n in range(4) :
 
 En resumen, los bucles **for** y **while** son herramientas esenciales en Python para ejecutar bloques de código de forma reiterada. Una diferencia muy importante entre el bucle **for** y el **while** es que el bucle **for** se ejecuta sobre **todos** los elementos de un iterable (salvo que usemos la setencia **break**), mientras que el bucle **while** se ejecuta dependiendo de una condición. 
 
----
-**3. ¿Qué es una lista por comprensión en Python?**  
+
+## 3. ¿Qué es una lista por comprensión en Python?
 Una lista por comprensión en Python es una manera ágil y eficiente de crear nuevas listas a partir de iterables (una lista, tupla, string, rango, o set, u otro objeto iterable). Proporciona una sintaxis más compacta y legible que los bucles **for** tradicionales, para crear listas basadas en transformaciones o filtros aplicados a los elementos de un iterable.  Se usan cuando la trasformación o el filtro a aplicar se pueden expresar en una línea, es decir, no son excesivamente complejos. Si la trasformación a realizar no podemos expresarla en una sola línea, es mejor usar un bucle **for** para crear la nueva lista.  
 Sintaxis
 ```python
@@ -323,8 +321,8 @@ print(nueva_lista)   # Salida: [' MANZANA', 'MANDARINA', 'MELOCOTÓN', 'AGUACATE
 
 En resumen, esta estructura nos permite crear listas a partir de otras listas, usando una sola línea de código, de forma muy compacta y eficiente. 
 
----
-**4. ¿Qué es un argumento en Python?**  
+
+## 4. ¿Qué es un argumento en Python?
 Un argumento en Python es un concepto que se usa relacionado con los métodos y las funciones. **Funciones** son bloques de código que encapsulamos y a las que les damos un nombre. De esta manera, podemos llamar a estos bloques para ejecutarlos en diferentes puntos de nuestra aplicación, sin tener que repetir ese código: a eso se le llama reutilización del código y nos permite construir aplicaciones más compactas y más fáciles de entender. Estas funciones pueden tener (de hecho, la mayor parte de las veces los tienen) **argumentos**, que nos permiten pasar a estos bloques encapsulados variables para que el bloque de código que contienen sea ejecutado con esos valores. Veámoslo con un ejemplo: vamos a definir una función sencilla que sume dos valores. 
 ```python
 def funcion_suma(primer_sumando, segundo_sumando) :
@@ -335,7 +333,7 @@ print(funcion_suma(45, 15))   # Salida: 60
 ```
 En este caso, los **argumentos** de 'funcion_suma' son **primer_sumando** y **segundo_sumando** y se encierran entre paréntesis. Estos argumentos nos permiten pasar a la función cualquier valor que deseemos. De esta manera, podemos usar esta función en cualquier parte de nuestra aplicación y con cualquier par de valores. Esto nos da una enorme flexibilidad.
 
-**Argumentos por posición o por nombre**  
+### 1. Argumentos por posición o por nombre
 Cuando pasamos los argumentos a una función podemos hacerlo empleando dos métodos distintos.
 - **Por posición**. En este caso, al pasar los argumentos debemos asegurarnos que la posición en la que los pasamos a la función es la misma que en la definición. Veámoslo con un ejemplo.
 ```python
@@ -353,7 +351,7 @@ def datos_usuario(nombre, apellido) :
 print(datos_usuario(nombre = 'Iñaki', apellido = 'Gómez'))  #Salida: 'El nombre del usuario es Iñaki Gómez' Uso correcto.
 print(datos_usuario(apellido = 'Gómez', nombre = 'Iñaki'))  #Salida: 'El nombre del usuario es Iñaki Gómez' Uso correcto.
 ```
-**Argumentos por defecto**  
+### 2. Argumentos por defecto  
 Como hemos mencionado, al crear una función definimos los argumentos (si es que los tiene) necesarios para ejecutar esa función. Y al utilizarla debemos dar valores a esos argumentos para que todo funcione correctamente. Pero puede darse el caso en no tengamos un valor para uno o varios de esos argumentos y en tal caso, al llamar a la función se generaría un error. Aquí es donde entran en juego los valores por defecto. 
 Los valores por defecto son valores que damos a los argumentos de una función al definirla, y son esos los valores que tomará la función al llamarla, si no le pasamos esos valores explícitamente. Veámoslo con un ejemplo.  
 *Creamos una función y asignamos valores por defecto a ambos argumentos, mediante la asignación =: en el caso de 'nombre' es 'Jhon' y en el caso de 'apellido' es 'Doe'*
@@ -368,10 +366,10 @@ print(datos_usuario(,'Gómez'))  #Salida: Se genera un error sintáctico
 ```
 Es importante señalar que si no vamos a pasar el primer valor (dejamos el de defecto) debemos pasar los argumentos por nombre.  
 
-**Desempaquetado de argumentos**   
+### 3. Desempaquetado de argumentos   
 El desempaquetado de argumentos se usa para definir funciones en las que no sabemos a priori cuántos argumentos vamos a recibir y por tanto, no podemos explicitarlos en el momento de su definición. El desempaquetado de argumentos es una técnica poderosa en Python que permite expandir secuencias y diccionarios al pasar argumentos a funciones.
 
-1. **Desempaquetado posicional**
+1. **Desempaquetado posicional**  
 El desempaquetado de argumentos posicionales permite pasar los elementos de un iterable (lista, tupla, etc.) como argumentos posicionales a una función.  
 
 Sintaxis
@@ -455,8 +453,7 @@ listado('Buenos', 'días', nombre = 'Iñaki', apellido = 'Mendigutxia')
 En resumen, los **argumentos** en Python (y en todos los lenguajes funcionales) son parte esencial de las **funciones**  que nos permiten pasar valores diferentes que dichas funciones que ejecutarán su código interno, generando una salida específica para esos valores de entrada. Esto nos permite una enorme flexibilidad, reduce el código de una aplicación ya que reutilizamos mlíneas en diferentes situaciones y hace que las aplicaciones sean mucha más fáciles de entender y de corregir errores. Tal co mo hemos visto, Python tiene diferentes opciones que se adaptan a multitud de situaciones, lo que hace que sea una herramienta de programación tan poderosa.
 
 
----
-**5. ¿Qué es una función Lambda en Python?**  
+## 5. ¿Qué es una función Lambda en Python?
 Una función lambda es una función especial que se define de forma sencilla en una sola línea y es anónima, aunque pueda ser asignada a una variable. Nos permite definir funciones sencillas y muy compactas.
 
 Características principales
@@ -484,12 +481,9 @@ print(suma(45, 15))   # Salida: 60
 Como vemos, es la misma función que definimos en un punto anteriror, pero definida con un formato en una sola línea, mucho más compacto. Se recomiendan cuando la expresión es una operación sencilla que se puede expresar en una sola línea y al ser anónima no necesite usarse en otras partes de la aplicación. En nuestro ejemplo la hemos asignado a una variable y podríamos usarla en otra parte, pero no tiene por qué ser así.  
 Si el bloque de código de la función consta de varias líneas, o lo vamos a usar en otras partes del código, es mejor usar una función regular.
 
----  
 
 
-
-
-**6. ¿Qué es un paquete pip?**
+## 6. ¿Qué es un paquete pip?
 
 Los paquetes pip son librerias desarrolladas por programadores que añaden funcionalidades a la base de Python. Cuando instalamos Python en una máquina viene con un conjunto básico de componentes (tipos de objetos, funciones, operadores, métodos, clases,...) que son los llamados objetos built-in. Pero con el tiempo, los desarrolladores de Python han ido desarrollando bibliotecas que aumentan enormemente las funcionalidades de Python. **PIP** es una aplicación de consola que nos permite gestionar los paquetes que necesitemos instalar en nuestra máquina para su uso. De esta manera, con el comando **pip** podemos instalar en nuestra máquina el paquete que necesitemos y así podemos usar sus funciones, métodos y clases sin tener que crearlos desde cero. Existen infinitos paquetes desarrollados por la comunidad Python para múltiples áreas: machine learning, ciencia de datos, representaciones gráficas, deep learning, tratamieto de textos, reconocimieto de caracteres,... Esta enorme aportación de la comunidad Python hace que este lenguaje sea uno de los más potentes y desarrollados.
 
