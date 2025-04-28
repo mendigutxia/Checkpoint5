@@ -1,577 +1,683 @@
 # Checkpoint nº 5: teoría
 
+## 1. ¿Para qué usamos Clases en Python?
+Antes de responder a esta pregunta, voy a poner un poco de contexto, explicando qué es un paradigma de programación, concepto básico que se aplica a todos los lenguajes de programación y que es necesario para responder a la pregunta.  
+Los **paradigmas de programación** son enfoques o estilos fundamentales para organizar y estructurar cualquier código de programación. Cada paradigma ofrece una forma distinta de pensar y resolver problemas en el ámbito del desarrollo de software. Existen muchos paradigmas, pero nos vamos a centrar en el **paradigma orientado a objetos**, que es el que nos ocupa.
+**POO (Programación Orientada a Objetos)** es un paradigma de programación que organiza el código en clases y objetos, facilitando la reutilización, modularidad y mantenibilidad del software. En este paradigma, todo es un objeto (enteros, strings, listas, funciones, etc.) Además, puedes crear tus propias estructuras de datos y comportamientos personalizados, que también serán objetos. La **Programación Orientada a Objetos (POO)** es uno de los paradigmas más utilizados en el desarrollo de software debido a su capacidad para modelar problemas del mundo real de manera intuitiva, ya que creamos objetos que existen en el mundo real (ya sean objetos físicos o conceptuales) con todas las características (atributos) y funcionalidades (métodos) necesarios para cumplir el objetivo de programación deseado. De alguna manera, recreamos el mundo real con su comportamiento específico en nuestra aplicación Python. Python es un lenguaje de programación multiparadigma: eso significa que podemos programar en Python usando diferentes paradigmas. En el caso de Python, podemos usar el paradigma funcional/modular y el **paradigma orientado a objetos**. 
+Cada objeto combina:
+- Datos (atributos o propiedades).
+- Comportamientos (métodos o funciones).  
 
-## 1. ¿Qué es un condicional?  
-Un **condicional** en Python (y en general, en cualquier lenguaje de programación, ya que es una estructura universal en todos ellos) es una expresión sintáctica que permite ejecutar porciones (bloques) de código de Python dependiendo del cumplimiento de una o varias **condiciones**.  Este tipo de estructuras es fundamental para el desarrollo de aplicaciones, ya que nos permiten controlar el flujo del programa: le damos 'inteligencia' a una aplicación, al hacer que tome diferentes caminos dependiendo de las condiciones. Esto hace que la aplicación que hayamos desarrollado se comporte diferente dependiendo de la entrada que le suministremos. Podemos decir que este tipo de estructuras son el primer paso de **inteligencia artificial** que se dió en programación.
-Representándolo con un diagrama de flujo:  
+### Componentes clave
+#### 1. Clase
+Es el **molde** que nos sirve para construir los objetos del paradigma orientado a objetos. La clase se define por los atributos y métodos propios a cualquier objeto de esa clase.
+#### 2. Objeto
+Instancia concreta de una clase. Estos son los objetos reales que se crean en el espacio de objetos y tiene existencia real en el espacio de memoria de la aplicación.
+#### 3. Atributo
+Variables que almacenan datos del objeto (ej: color, precio).
+#### 4. Método
+Funciones asociadas al objeto (ej: calcularTotal()).
+#### 5. Constructor
+Método especial que inicializa el objeto al crearse. Este método es el que hace que cada instancia u objeto sea único en el espacio de objetos.
 
-<div align="center">
-    <img src="imagenes/condicional.jpg" alt="Condicionales" width=550>
-</div>
-
-La sintaxis de las estructuras condicionales existentes en Python son 3
-
-**Sintaxis 1**
+**Ejemplo**
 ```python
-    if condición :  
-        bloque a ejecutar si 'condición' es True
-```
-
-Esta es la estructura más sencilla de condicional: en ella, si *condición* se cumple (es decir es verdadera) se ejecuta el bloque de código. Si no se cumple, el flujo del programa salta a la siguiente línea después del bloque condicional.
-
-Ejemplo  
-*Jon  es el usuario de tipo 'Superusuario' en una aplicación. Cuando un usuario introduce su nombre , este código comprueba que es 'Jon': en caso de que sea él cambia el valor de la variabla 'autorizado' a True  y muestra un mensaje de saludo. Si no es 'Jon', salta a la siguiente línea después del bloque condicional.*
-```python
-name = 'Jon'
-autorizado = False
-if name == 'Jon' :
-    autorizado = True
-    saludo = f'Hola, {name}, puedes acceder como Superusuario'
-    print(saludo)
-
-# Salida: Hola, Jon, puedes acceder como Superusuario'
-```
-**Sintaxis 2**
-```python
-    if condición :
-        bloque1 (a ejecutar si 'condición' es True)
-    else :
-        bloque2 (a ejecutar si 'condición' es False)
-```
-En esta sintaxis, si se cumple la *condición*, se ejecuta el *bloque1* de código. Si no se cumple dicha condición, se ejecuta el *bloque2* de código. 
-
-Ejemplo  
-*Jon  es el usuario de tipo 'Superusuario' en una aplicación. Cuando un usuario introduce su nombre, este código comprueba que es 'Jon': en caso de que sea él, cambia el valor de la variabla 'autorizado' a True  y muestra un mensaje de saludo. Si no es 'Jon', muestra un mensaje en pantalla señalando que no está autorizado.*
-```python
-autorizado = False
-name = 'Jone'
-if name == 'Jon' :
-    autorizado = True
-    saludo = f'Hola, {name}, puedes acceder como Superusuario'
-    print(saludo)
-else :
-    print('Hola, no estás autorizado para acceder')
-
-# Salida: Hola, no estás autorizado para acceder
-
-```
-**Sintaxis 3**
-```python
-    if condición1 :
-        bloque a ejecutar si 'condición1'es True
-    elif condición2 :
-        bloque a ejecutar si 'condición2'es True
-    elif condición3 :
-        bloque a ejecutar si 'condición3'es True
-    .
-    .
-    .
-
-    elif condición_N :
-        bloque a ejecutar si 'condición_N'es True 
-    else :
-        bloque a ejecutar si 'condición1', 'condición2', ... 'condición_N' son False
-```
-
-En este caso, podemos usar tantos bloques **elif** como queramos, cada uno con su condición: esto nos permite definir tantas condiciones y bloques de código como queramos. Esto es útil en el caso de tener múltiples estados o situaciones en las que debamos aplicar diferentes bloques de código dependiendo de esas condiciones.
-
-Ejemplo  
-*Jon, Nerea y Txomin son los usuarios de tipo 'Superusuario' en una aplicación. Cuando un usuario introduce su nombre, este código comprueba que es alguno de los superusuarios: en caso de que lo sea, cambia el valor de la variable 'autorizado' a True  y muestra un mensaje de saludo. Si no es ninguno de estos, muestra un mensaje en pantalla señalando que no está autorizado.*
-```python
-autorizado = False
-name = 'Nerea'
-if name == 'Jon' :
-    autorizado = True
-    saludo = f'Hola, {name}, puedes acceder como Superusuario'
-    print(saludo)
-elif name == 'Nerea' :
-    autorizado = True
-    saludo = f'Hola, {name}, puedes acceder como Superusuario'
-    print(saludo)
-elif name == 'Txomin' :
-    autorizado = True
-    saludo = f'Hola, {name}, puedes acceder como Superusuario'
-    print(saludo)
-else :
-    print('Hola, no estás autorizado para acceder')
-
-# Salida: Hola, Nerea, puedes acceder como Superusuario
-```
-
-En los 3 tipos de condicionales mencionados, si alguna de las condiciones es verdadera, no se evalúan el resto de las condiciones posteriores que pueda haber, saltando el flujo del programa a la primera línea después del bloque condicional: esto hace que la ejecución del programa sea más ágil que si tuviéramos que evaluarlas todas, ya que al encontrar la primera que es 'True', se salta el resto de las líneas del bloque condicional. En nuestro último ejemplo, si el usuario fuera *Jon*, el flujo del pograma saltaría a la siguiente línea después de este bloque, no evaluándose los **elif** ni el **else**.
-
-Resumiendo, las estructuras condicionales son estructuras fundamentales en Python (y en cualquier lenguaje de programación) ya que nos permiten ejecutar diferentes bloques de código dependiendo de que se den unas determinadas condiciones. Además, tenemos 3 tipos de estructuras condicionales en Python, lo que nos da mucha flexiblidad a la hora de elegir la más adecuada a la situación que queramos resolver.  
-
-
-## 2. ¿Cuáles son los diferentes tipos de bucles en Python? ¿Por qué son útiles?  
-Los bucles son estructuras de control fundamentales en programación, que nos permiten repetir la ejecución de un bloque de código en diferentes situaciones (iteración).  
-Son muy útiles para:  
-- Automatización: ejecutan una tarea repetidamente sin tener que escribir el mismo código varias veces.
-- Procesamiento de datos: permiten iterar sobre colecciones de datos (listas, tuplas, diccionarios, etc.) para realizar operaciones en cada elemento, realizando complejas operaciones con pocas líneas de código.
-- Creación de programas dinámicos: hacen que el programa se adapte a diferentes entradas y situaciones, repitiendo acciones según sea necesario.
-
- Existen 2 tipos de bucles en Python, el bucle **for** y el **while**.
-
-
- ### 1. Bucle 'for'
- El bucle **for** se usa para recorrer iterables (tipos de python compuestos de varios elementos) y ejecutar un bloque de código; iterables son los strings, las listas, las tuplas, los diccionarios, los rangos y los sets. El bucle **for** nos permite coger todos y cada uno de los elementos del iterable y aplicar un mismo bloque de código a cada uno de ellos.  
- Representándolo con un diagrama de flujo:  
-
-<div align="center">
-    <img src="imagenes/for.jpg" alt="Bucle for" width=450>
-</div>
-
-**Sintaxis**
- ```python
-for variable in iterable :
-    bloque de código a ejecutar  
-```
-- variable: una variable que toma el valor de cada elemento del iterable en cada iteración del bucle.
-- iterable: una lista, tupla, string, rango, o set (u otro objeto iterable).
-- bloque: el código dentro del bloque for (indentado) se ejecuta una vez para cada elemento de la secuencia.
-
-Ejemplo 1  
-*Tenemos un diccionario, obtenido después de procesar una petición a una base de datos, con los datos de un usuario. Queremos mostrarlos por pantalla.*
- ```python
-datos_usuario = {'Nombre': 'Inaki', 'Apellido': 'Mendigutxia', 'Edad': 39, 'Dirección': 'Plaza Basetxea 1 1º B', 'Municipio': 'Errenteria'}
-n = 0
-print('Datos del usuario\n')
-for datos, valores in datos_usuario.items() :
-    n += 1
-    print(f'{n}. {datos}:  {valores}')
+class Coche:                               # Esta es la clase, molde que usamos para construir objetos 'coche'
     
+    def __init__(self, marca, modelo):     # Método constructor
+        self.marca = marca                 # Atributo
+        self.modelo = modelo               # Atributo
+        self.velocidad = 0                 # Atributo
 
-# Salida:
+    def acelerar(self, incremento):        # Método
+        self.velocidad += incremento
 
-# Datos del usuario
-# 1. Nombre:  Inaki
-# 2. Apellido:  Mendigutxia
-# 3. Edad:  39
-# 4. Dirección:  Plaza Basetxea 1 1º B
-# 5. Municipio:  Errenteria
+# Crear objeto
+mi_coche = Coche("Volkswagen", "Golf")     #Objeto 'coche' con unas ciertas características
+tu_coche = Coche("Ford", "Mondeo")         #Objeto 'coche' con otras características diferentes
 ```
-En este caso, el iterable es el diccionario *datos_usuario*, compuesto por pares clave-valor. Las variables *datos*, *valores* van tomando consecutivamente los diferentes valores de cada par de valores de los elementos del diccionario, y se usan en la ejecución del bloque de código (la impresión en pantalla de los mismos). El blucle *for* recorre todos los elementos del diccionario, lo que nos permite de una forma sencilla (con apenas 2 líneas de código) mostrar toda la información. Nos daría lo mismo si el diccionario fuese de 500 pares key-value, en vez de 5, el programa se ejecutaría correctamente sobre esos 500 elementos.  
+En este ejemplo, a partir de la clase **Coche**, hemos creado 2 coches distintos, cada uno con sus características (marca y modelo) particulares.
 
-Ejemplo 2
+### Características fundamentales de la programación orientada a objetos
+
+#### 1. Abstracción
+Se modelan solo las características esenciales de un objeto para el objetivo de desarrollo definido, ignorando detalles irrelevantes.
+Ejemplo: un objeto *Auto* puede abstraerse con atributos como marca, modelo y métodos como arrancar().  
+**Ejemplo**:
 ```python
-palabra = "Devcamp"
-for letra in palabra:
-    print(letra)
-# Salida:
-
-# D
-# e
-# v
-# c
-# a
-# m
-# p
+class Auto:
+    def __init__(self, marca, modelo):
+        self.marca = marca          # Atributo
+        self.modelo = modelo        # Atributo
+    
+    def arrancar(self):         
+        print('Coche arrancado')    # Método  
 ```
-En este caso el iterable es la palabra *Devcamp* y la variable es *letra*. El bucle **for** recorre la palabra letra por letra y para cada una de ellas realiza un salida por pantalla.
 
- ### 2. Bucle 'while'  
- El bucle while nos permite ejecutar un bloque de código repetidamente mientras sea **verdadera** una cierta condición.  Representándolo con un diagrama de flujo:  
+#### 2. Encapsulación  
+Ocultar los detalles internos de un objeto y exponer solo lo necesario (mediante modificadores de acceso: public, private, protected).  
+```python
+class Auto:
+    def __init__(self, marca, modelo):
+        self._marca = marca          # Atributo protegido, marcado con '_'
+        self._modelo = modelo        # Atributo protegido, marcado con '_'
+    
+    def arrancar(self):         
+        print('Coche arrancado')    # Método  
+```  
+El underscore (_) indica que ese atributo no debe ser accedido desde fuera del objeto, protegiando así su modificación indeseada.
 
+
+#### 3. Herencia  
+Permite que una clase (subclase) herede atributos y métodos de otra clase (superclase), promoviendo la reutilización de código. Esto es una herramienta poderosísima ya que podemos definir clases muy generales, y mediante la herencia, crear clases más concretas, definiendo y concretando sus propiedades y métodos.  
+
+**Ejemplo**
+```python
+class Animal:
+    def respirar(self):
+        print("Respirando...")
+
+class Perro(Animal):  # Perro hereda de Animal el método 'respirar'
+    def ladrar(self): # Añadimos este atributo, específico de ese tipo de animal concreto
+        print("¡Guau!")
+```
+#### 4. Polimorfismo
+Esta característica nos permite hacer que un mismo método tenga diferentes implementaciones dependiendo de la clase.  
+
+**Ejemplo**  
+```python
+class Animal:
+    def se_comunica(self):
+        pass
+
+class Perro(Animal):  # Hereda de Animal
+    def se_comunica(self):
+        print("¡Guau!")
+
+class Gato(Animal):  # Hereda de Animal
+    def se_comunica(self):
+        print("¡Miau!")
+```
+Hemos implementado el método *se_comunica* de forma diferente para cada uno de los objetos tipo *Animal*. Esta característica da una enorme flexibilidad a cualquier lenguaje orientado a objetos.
+
+### Ventajas de la POO  
+- Reutilización de código a través de la herencia.
+- Modularidad, mantenibilidad  y seguridad a través de la encapsulación.
+- Flexibilidad a través del polimorfismo.
+- Modelado intuitivo de problemas reales mediante objetos reconocibles por cualquiera.
+
+### Lenguajes que usan POO
+
+Java, C++, Python, C#, Ruby, JavaScript, PHP, Swift...
+
+### Casos de uso más adecuados para usar POO
+- Sistemas con entidades complejas (ej: videojuegos, apps bancarias).  
+- Cuando se requiere escalabilidad y organización.  
+- Proyectos colaborativos (gracias a la modularidad).
+
+## 2. ¿Qué método se ejecuta automáticamente cuando se crea una instancia de una clase?
+Tal como he explicado en el punto anterior, en la **programación orientada objetos** todos los objetos que se crean lo hacen a partir de un molde, que es la **clase**. Cuando se instancia (crea) un objeto, se le asigna una dirección en memoria y un espacio donde se asignan los valores particulares que lo diferencian de los otros objetos creados a partir de la misma clase. Esos valores son los que usa el método *creador* (que es el que se ejecuta automáticamente al crear una instancia) para asignarlos al objeto. El método creador se llama siempre igual y su nombre es **\_\_init\_\_**.
+
+### Características clave
+- **Nombre especial**  
+Siempre se llama **\_\_init\_\_**. Los nombres que comienzan y terminan con dos guiones bajos (dunders) tienen un significado especial en Python.
+- **Constructor**  
+Es el constructor de la clase. Define cómo se crea un objeto de esa clase.
+- **Inicialización de atributos**  
+Se utiliza para asignar valores iniciales a los atributos del objeto.
+- **El primer argumento siempre es *self***  
+Siempre recibe self como primer argumento, que es una referencia al objeto que se está creando. Este eargumento es el que lo hace único diferenciándolo del resto de los objetos. A través de self, puedes acceder y modificar los atributos del objeto.
+- **Puede recibir otros argumentos**  
+Además de self, puede recibir otros argumentos que se utilizan para inicializar los atributos con valores específicos. 
+
+**Ejemplo**  
+```python
+class Coche:         
+    
+    def __init__(self, marca, modelo):  # Constructor
+        self.marca = marca              # Atributo
+        self.modelo = modelo            # Atributo
+        self.velocidad = 0              # Atributo
+
+    def acelerar(self, incremento):     # Método
+        self.velocidad += incremento
+
+# Crear objeto
+mi_coche = Coche("Volkswagen", "Golf")   #Objeto 'coche' con unas ciertas características
+print(f'Mi coche\n Marca: {mi_coche.marca}\n Modelo: {mi_coche.modelo}')
+
+# Salida
+
+# Mi coche
+#  Marca: Volkswagen
+#  Modelo: Golf
+```
+En este ejemplo. hemos creado un objeto de tipo *coche*. Al ejecutar la línea:
+```python
+mi_coche = Coche("Volkswagen", "Golf")
+```
+el intérprete Python crea un objeto en memoria y asigna a sus atributos *marca* y *modelo* los valores que hemos pasado al método constructor **\_\_init\_\_** ("Volkswagen" y "Golf", respectivamente)
+
+
+## 3. ¿Cuáles son los tres verbos de API?
+La verdad es que los métodos explicados en el curso son 4: GET, POST, PUT y DELETE, pero intentaré ajustarme a la pregunta.
+Para contextualizar, explicaré primero qué es una API.  
+Una **API (Application Programming Interface)** es un conjunto de reglas, protocolos y herramientas que permiten que diferentes sistemas o componentes de software se comuniquen entre sí. Actúa como un intermediario que facilita la interacción entre aplicaciones, sin necesidad de que los desarrolladores conozcan los detalles internos de cada sistema. De esta mnanera, podemos acceder a un recurso (archivo csv, json, html, ...) que ofrezca un servidor, usando un protocolo estandar, universal para cualquier servidor/servicio. Así, podemos desarrollar una aplicación que acceda a datos que otras aplicaciones ofrezcan, sin preocuparnos de cómo ese servidor remoto haya implementado ese recurso: para nosotros es una *caja negra* con la que interactuamos *lenguaje estándar (protocolo de comunicación)* predefinido y que responde adecuadamente a nuestra interacción, ya sea para obtener información o para enviársela.
+
+### Tipos comunes de APIs  
+1. **Web APIs**. Accesibles via HTTP/HTTPS. Ejemplo: Twitter API, Google Maps API    
+2. **SOAP**. Protocolo basado en XML. Ejemplo: sistemas empresariales          
+3. **REST**. Arquitectura basada en HTTP. Ejemplo: API de GitHub                   
+4. **GraphQL**. Permite consultas específicas.Ejemplo: API de Shopify                  
+5. **Bibliotecas**. APIs para lenguajes de programación. Ejemplo: math en Python       
+
+### Componentes clave de una API
+1. **Endpoint** URL única que identifica un recurso (ej: api.com/users). Es la 'dirección' donde se encuentra ese recurso.
+1. **Métodos/Verbos HTTP**. Acciones (GET, POST, PUT, DELETE) Son las acciones que podemos realizar: obtener (GET), enviar (POST), actualiza (PUT) o borrar (DELETE) contra el recurso remoto. Estos verbos son específicos de una API REST. Otro tipo de APIs pueden tener otro tipo de sistema de interacción con la API.
+1. **Request (Solicitud)**. Datos enviados al servidor
+1. **Response (Respuesta)**. Datos devueltos por el servidor
+1. **Formato de datos**. Usualmente JSON o XML.
+
+           
+
+### Cómo funciona el flujo API
+1. Cliente hace una solicitud (request)
+1. API valida y procesa la solicitud
+1. Servidor ejecuta la operación requerida
+1. API devuelve una respuesta (response) al cliente
+
+### Verbos HTTP
+Los verbos HTTP (también llamados métodos HTTP) son fundamentales en el diseño de APIs RESTful, ya que definen la acción que se realizará sobre un recurso.  
+Los tres verbos principales (o métodos HTTP) utilizados en una API son:
+
+1. **GET**  
+Se utiliza para solicitar datos de un recurso específico. Es una operación de solo lectura y no debe modificar el servidor.
+1. **POST**  
+Se utiliza para enviar datos al servidor para crear un nuevo recurso.
+1. **PUT**  
+Se utiliza para enviar datos para actualizar o reemplazar un recurso existente.
+
+En Python, la biblioteca **requests** es la que nos permite gestionar el entorno API REST. Para ello debemos instalarla en nuestro entorno con el comando
+
+```
+pip install requests
+```
+y para usarlo en nuestra aplicación debemos importarlo
+```python
+import requests
+```
+Un ejemplo de uso, con una solicitud **get**.
+
+```python
+import requests
+import pprint
+
+r = requests.get('https://jsonplaceholder.typicode.com/posts')   # Obtenemos el recurso con 'GET'
+pprint.pprint(r.json()[1]['body'])   # Mostramos parte de la información recibida
+
+# Salida
+
+#('est rerum tempore vitae\n'
+# 'sequi sint nihil reprehenderit dolor beatae ea dolores neque\n'       
+# 'fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\n'
+# 'qui aperiam non debitis possimus qui neque nisi nulla')
+
+```
+En esta código solicitamos a la URL *https://jsonplaceholder.typicode.com/* el recurso */posts* mediante el verbo **get**. El servidor nos devuelve 500 post en formato JSON. Este se trasforma mediante el método *json()* en un objeto python (una lista de dicccionarios en este caso) y mediante *pprint*, mostramos en pantalla el valor *'body'* del elemento de la lista con index = 1. Hemos accedido a un recurso remoto (la dirección https), hemos obtenido un recurso que ese servidor ofrecía y a partir de ahí podremos usarlo como queramos. Obviamente, previamente debíamos tener información de la existencia de ese recurso. En este caso es un recurso de utilización libre (sin necesidad de autentificación), pero en muchos otros casos necesitaremos de algún mecanismo de autentificación para acceder a él. Que en muchas ocasiones es previo pago de algún tipo de cuota.
+
+
+## 4. ¿Es MongoDB una base de datos SQL o NoSQL?
+La base de datos MongoDB es una base de datos NoSQL. Vamos a ver cuales son las diferencias entre unas y otras.  
+### SQL (Bases de Datos Relacionales)
+1. **Estructura**. Datos organizados en tablas con filas y columnas. Se define un esquema fijo muy rígido, lo que les resta flexibilidad. El cambio en su estructura es complejo y delicado. Es, por tanto, muy importante definir *a priori* una estructura correcta (schema) que es el que va a determinar el comportamiento de la base de datos.  
+Un ejemplo de un esquema de una base de datos es el siguiente (cada rectángulo del dibujo es una tabla con sus propias filas y columnas)
 <div align="center">
-    <img src="imagenes/while.jpg" alt="Bucle while" width=450>
+    <img src="imagenes/sql_schema.png" alt="Condicionales" width=1000>
 </div>
 
-**Sintaxis**
- ```python
- while condición :
-    bloque de código a ejecutar  
+2. **Lenguaje de consultas**  
+Utilizan SQL (Structured Query Language) para definir y manipular los datos. Este es un tipo de lenguaje de paradigma imperativo en el que expresamos lo que queremos obtener y el motor de base de datos se encarga de cumplir con la tarea. Aunque puede haber particularidades para cada motor de base de datos, de forma general emplean el mismo lenguaje base. Esto facilita el aprendizaje de nuevas bases de datos de esta familia.  
+
+    **Ejemplo consulta SQL**
+```sql
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE
+);
 ```
-- condición: una condición que si es True hace que se ejecute el bloque de código, y  si es False finaliza el bucle y salta a la siguiente línea después del bucle.
-- bloque de código: las líneas que se ejecutan en el caso de que *condición* sea True. 
+3. **Escalabilidad**  
+ Escalado vertical (aumentar la capacidad de un solo servidor). Si la base de datos crece mucho al aumentar el nº de registros, necesitaremos aumentar los recursos (RAM, CPU, disco duro,...) asignados a la máquina donde resida la base de datos. Esto puede resultar en importantes incrementos de costos de operación.
+1. **Consistencia**  
+ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad) para garantizar la integridad de los datos. Los resultados obtenidos de las consultas a estas bases de datos son fiables y coherentes.  
 
-Una cuestión crítica en este tipo de bucles es que la *condición* se vuelva False en algún momento, porque de otra forma el bucle se vuelve infinito, lo que lleva al bloqueo de la aplicación.
+**Ejemplos**. MySQL, MariaDB, PostgreSQL, Oracle, Microsoft SQL Server.
 
+### NoSQL (acrónimo de Not Only SQL)
+1. **Estructura**  
+Pueden ser orientadas a documentos, clave-valor, grafos, etc. No requieren un esquema fijo, lo que las hace extraordinariamente flexibles. Eso tiene sus inconvenientes ya que al permitir estructuras flexibles, pueden caer en el caos si no se lleva una gestión cuidadosa: se dice que estas bases de datos 'tragan' con todo, en contra de lo que pasa con las SQL.  
 
-Ejemplo 1  
-*Tenemos una lista y queremos mostrar en pantalla solo los 5 primeros elementos de la lista*
- 
- ```python
-n = 0
-frutas = ['naranja', 'pera',' manzana', 'mandarina', 'melocotón', 'aguacate'] 
-while n < 5 :
-    print(frutas[n])
-    n += 1
-
-
-# Salida:
-
-# naranja
-# pera
-# manzana
-# mandarina
-# melocotón
+Ejemplo de un  registro de base de datos **MongoDB**
+```mongo
+{
+  "_id": "123",
+  "name": "Ana",
+  "email": "ana@example.com",
+  "address": {
+    "city": "Madrid"
+  }
+}
+{
+    "_id": "124",
+  "name": "Juan",
+  "surname": "Campano"
+  "email": "juan@example.com",
+  "address": {
+    "street": "C/Olmo
+    "number": 45
+    "city": "Madrid"
+  }
+}
 ```
-La condición en este bucle es que la variable *n* sea menor que 5: en tal caso, se muestra en pantalla el elemento de la tupla *frutas* que se encuentra en esa posición. De esta manera, el último elemento de la tupla  (aguacate), que es el nº 5, no se imprime. Aquí nos aseguramos que el bucle finalice alguna vez ya que la variable *n*, partiendo de 0, aumenta en una unidad en cada iteración.
+Vemos que en este caso la estructura de los 2 documentos (equivalente a los registros de una base de datos SQL) no es la misma: el 2º tiene pares clave-valor ("surname", "street", "number") que no aparecen en el primero. Esto sería imposible en una SQL.  
 
-Ejemplo 2  
-*Hemos definido un bucle que pregunta un nombre de usuario, y hasta que no se introduce le nombre clave, continúa preguntan indefinidamente*
- ```python
-nombre_clave = 'Pedro'
-nombre_usuario = ''
-while  nombre_usuario != nombre_clave :
-    print('Teclea nombre de usuario:')
-    nombre_usuario =input()
+2. **Lenguaje**  
+Varía según el tipo de base de datos: el lenguaje de consulta de MongoDB tiene una cierta similitud con el estandar SQL, pero el de una base de datos de grafos como Neo4j, es muy diferente. Eso hace que el salto de una a otra pueda requerir una curva de aprendizaje importante.
+Veamos un ejemplo de consulta **find** (búsqueda de un documento) sobre el ejemplo del punto anterior.
+```mongodb
+db.collection.find({
+  "name": "Ana",
+  "address.city": "Madrid"
+})
+
+# Salida: devuelve el documento que coincide con las condiciones de la búsqueda
+ {
+  "_id": "123",
+  "name": "Ana",
+  "email": "ana@example.com",
+  "address": {
+    "city": "Madrid"
+  }
+}
 ```
-En este caso, la condición para que se ejecute el bloque de código es que el nombre que teclea el usuario NO sea *Pedro*. Mientras no acierte con ese nombre, el sistema seguirá pidiéndole que teclee uno. Este podría ser el caso de un bucle infinito: para que este bucle deje de ejecutarse y el programa no se quede de forma infinita en este punto, el usuario debe acertar con el nombre (Pedro)
+3. **Escalabilidad**. Escalado horizontal (distribuir los datos en múltiples servidores). Están diseñadas para que la necesidad de crecimiento se realice de manera sencilla, añadiendo más máquinas que trabajan en cluster. Esto suele ser más económico que el crecimiento vertical de las bases de datos SQL.
+1. **Consistencia**. Pueden sacrificar algo de consistencia en favor de la disponibilidad y rendimiento (modelo BASE: Basically Available, Soft state, Eventually consistent). Los datos que entregan puede que no sean del todo fiables, en resumidas cuentas.
 
-### 3. Control de bucles
+**Ejemplos**. MongoDB, Cassandra, Redis, Neo4j.
 
-Existen 2 sentencias que nos permiten modificar el comportamiento de los bucles **for** y **while** en Python
+En resumen: las bases de datos **SQL** tienen una estructura rígida, consistencia fuerte y escalado vertical. Adecuadas para aplicaciones que requieren transacciones ACID (debe ser muy fiables y coherentes) y relaciones complejas entre datos.
+Las bases de datos **NoSQL** son flexibles, escalan horizontalmente y suelen tener mayor rendimiento. Adecuadas para aplicaciones con grandes volúmenes de datos, esquemas variables y requisitos de alta disponibilidad.
 
-- **break**: termina la ejecución del bucle inmediatamente.
-- **continue**: salta la iteración actual del bucle y pasa a la siguiente iteración.
+## 5. ¿Qué es una API?
+Creo que ha sido suficientemente explicado en la pregunta 3, ya que para explicar claramente cuáles son los verbos API, he explicado previamente qué es y cómo funciona una API.
 
-**Ejemplos**
+## 6. ¿Qué es Postman?
+**Postman** es una aplicación de escritorio, y también web, que nos permite usar muchos (si no todos) los tipos de entorno API. Es una plataforma colaborativa para el desarrollo y testing de APIs (Application Programming Interfaces) que se ha convertido en estándar para desarrolladores y equipos de QA. 
 
-**break**
+Es un cliente HTTP gráfico que permite:
+- Enviar peticiones a APIs (en el caso de API REST mediante GET, POST, PUT, etc.)
+- Organizar y documentar llamadas API
+- Automatizar pruebas
+- Mockear servicios
+- Monitorear APIs en producción  
+
+Postman ofrece versiones gratuitas y de pago (con más funcionalidades colaborativas), aunque la versión gratuita es más que suficiente para la mayoría de desarrolladores individuales.  
+Para instalar Postman para Windows debemos acceder al link  https://www.postman.com/downloads/  
+
+<div align="center">
+    <img src="imagenes/instal_postman.png" alt="Condicionales" width=1000>
+</div>    
+
+Nos permite usar muchos tipos de entornos API, cada uno de ellos con sus particularidades (verbos, operación,...). Ya mencioné en el punto 3 algunos tipos comunes de entornos API que existen. En este curso se están usando APIs de tipo REST, pero hay más. Estos son los tipo de APIs que puede gestionar Postman (imagen de las opciones que ofrece al crear una nueva colección).
+
+<div align="center">
+    <img src="imagenes/postman_api.png" alt="Condicionales" width=550>
+</div>    
+  
+
+En nuestro caso hemos usado API de tipo HTTP, con los verbos GET, POST, PUT y DELETE.  
+Veamos un ejemplo de uso: cómo se realiza una consulta GET (obtener recurso) al servidor *https://jsonplaceholder.typicode.com/* (es un servidor gratuito de pruebas) solicitando el recurso */posts*
+
+<div align="center">
+    <img src="imagenes/postman_get.png" alt="Condicionales" width=1500>
+</div>  
+
+Al hacer click en **Send**, la aplicación **Postman** ejecuta la petición al servidor y éste le devuelve el recurso asociado a ese *endpoint*, en este caso un archivo JSON con posts de pruebas. De esta manera, podemos probar endpoints que creemos nosotros, o ver qué recursos nos ofrecen endpoints creados por terceros, antes de integrarlos en nuestras aplicaciones usando la biblioteca **requests**. El flujo de trabajo típico con Postman es el siguiente:
+- Diseñar endpoints
+- Crear colección Postman
+- Configurar environments
+- Probar endpoints manualmente
+- Escribir tests automatizados
+- Generar documentación
+- Compartir con el equipo  
+
+En resumen, Postman es una aplicaión imprescindible para el testeo de *endpoints* de APIs propias o ajenas, usadas previamente a la integración final en aplicaciones, mediante bibliotecas como **requests**.
+
+
+## 7. ¿Qué es el polimorfismo?
+Polimorfismo es una característica fundamental de los lenguajes basados en el paradigma orientado a objetos. Esta característica permite, dada una clase con sus atributos y métodos, que una clase heredera de ella pueda redefinir alguno o todos sus métodos, adecuándolos a las especificades de esa clase. Esto nos permite una enorme flexibilidad a la hora de programar.
+
+### Tipos de Polimorfismo en Python
+1. **Polimorfismo por Herencia (Sobrescritura de métodos)**  
+Cuando una clase hija redefine un método de la clase padre:
+```python
+class Animal:
+    def se_comunica(self):
+        pass
+
+class Perro(Animal):  # Hereda de Animal
+    def se_comunica(self):  # Sobreescribimos el método
+        print("¡Guau!")
+
+class Gato(Animal):  # Hereda de Animal
+    def se_comunica(self):  # Sobreescribimos el método
+        print("¡Miau!")
+
+
+mi_perro = Perro()
+print(mi_perro.se_comunica())
+# Salida
+# ¡Guau!
+
+mi_gato = Gato()
+print(mi_gato.se_comunica())
+# Salida
+# ¡Miau!
+```
+En este ejemplo, hemos definido una clase genérica (Animal) y 2 clases heredaderas (Perro y Gato) En ambas hemos redefinido el método **se_comunica**, adecuándolo a la especifidad del animal que representan ambas clases.  
+
+2. **Polimorfismo por Duck Typing**  
+Python usa el principio "Si camina como pato y suena como pato, entonces es un pato". No importa el tipo del objeto, sino que tenga los métodos necesarios:
+```python
+class Pajaro:
+    def volar(self):
+        print("El pájaro vuela")
+
+class Avion:
+    def volar(self):
+        print("El avión despega")
+
+# Función que usa polimorfismo
+def hacer_volar(objeto):
+    objeto.volar()
+
+# Objetos completamente distintos
+hacer_volar(Pajaro())  # Salida: El pájaro vuela
+hacer_volar(Avion())   # Salida: El avión despega
+```
+En este ejemplo, hemos definido una función **(no un método de una clase, cuidado con esta diferencia)** que usa un objeto genérico como parámetro. El objeto que le pasemos debe tener esa característica común (volar), independientemente del objeto que sea (en este caso, tanto el pájaro como el avión vuelan)
+
+## 8. ¿Qué es un método dunder?
+Los métodos dunder (de 'double underscore', representados mediante '__'), también conocidos como métodos mágicos o especiales, son métodos que permiten a las clases definir comportamientos especiales en Python. Se llaman así porque están rodeados por doble guión bajo **( \_\_metodo\_\_ )**.
+Sirven para implementar funcionalidades especiales (operadores, acceso a atributos, inicializar atributos etc.)
+
+### Categorías Principales
+1. **Creación y destrucción de objetos**
+- \_\_new\_\_	Crea la instancia (antes que \_\_init\_\_) Lo ejecuta silenciosamente el interprete python (no lo hacemos nosotros) al ejecutar una sentencia del tipo
+```python
+obj = MiClase()
+```
+- \_\_init\_\_	Constructor (inicialización) Se define dentro de cada clase e inicializa los atributos del objeto. Si no se define se usa un \_\_init\_\_ por defecto vacío.
+```python
+class Coche:         
+    
+    def __init__(self, marca, modelo):  # Constructor
+        self.marca = marca  # Atributo
+        self.modelo = modelo   # Atributo
+        self.velocidad = 0  # Atributo
+
+# Crear objeto
+mi_coche = Coche("Volkswagen", "Golf")   #Objeto 'coche' con unas ciertas características
+```
+
+Con la setencia "*mi_coche = Coche("Volkswagen", "Golf")*" después de \_\_new\_\_, se ejecuta el método \_\_init\_\_ definido dentro de la clase *Coche*.  
+- \_\_del\_\_ Destructor (no confiable para limpieza crítica)  
+```python
+obj = MiClase()
+del obj
+```
+2. **Representación como string**
+- \_\_str\_\_	Representación legible para humanos (str(obj))
+- \_\_repr\_\_	Representación técnica/unambigua (idealmente, código para recrear el objeto)  
 
 ```python
-frutas = ['manzana', 'banana', 'cereza', 'aguacate']
-for fruta in frutas:
-    if fruta == 'cereza' :
-        break
-    print(fruta)
+class Coche:         
+    
+    def __init__(self, marca, modelo):
+        self.marca = marca  
+        self.modelo = modelo
+    
+    def __str__(self):
+        return f"El coche es un {self.marca} {self.y}"
+    
+    def __repr__(self):
+        return f"Coche({self.marca}, {self.modelo})"
 
-# Salida:
-
-# manzana
-# banana
+micoche= Coche('Ford', 'Mondeo')
+print(str(micoche))    #Salida:     El coche es un Ford Mondeo
+print(repr(micoche))   #Salida:    Coche(Ford, Mondeo)
 ```
-Cuando la variable *fruta* toma el valor *cereza*, se termina la ejecución del bucle y saltamos a la siguiente línea después del bucle.
+3. **Operadores matemáticos**
+- \_\_add\_\_	--> +
+- \_\_sub\_\_	--> -	
+- \_\_mul\_\_	--> *	
+- \_\_truediv\_\_	--> /	
+- \_\_floordiv\_\_	--> //	
+- \_\_mod\_\_	--> %	
+- \_\_pow\_\_	--> **  
 
-**continue**
+**Ejemplo**
+```python
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, otro):
+        return Vector(self.x + otro.x, self.y + otro.y)
+    
+    def __mul__(self, escalar):
+        return Vector(self.x * escalar, self.y * escalar)
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+v3 = v1 + v2  # Vector(4, 6)
+v4 = v1 * 3   # Vector(3, 6)
+```  
+4. **Comparación**
+
+- \_\_eq\_\_  -->	==
+- \_\_ne\_\_	--> !=
+- \_\_lt\_\_	--> <
+- \_\_gt\_\_	--> >
+- \_\_le\_\_	--> <=
+- \_\_ge\_\_	--> >=
+```python
+class Fecha:
+    def __init__(self, dia, mes, año):
+        self.dia = dia
+        self.mes = mes
+        self.año = año
+    
+    def __lt__(self, otra):
+        if self.año != otra.año:
+            return self.año < otra.año
+        if self.mes != otra.mes:
+            return self.mes < otra.mes
+        return self.dia < otra.dia
+
+f1 = Fecha(15, 3, 2023)
+f2 = Fecha(20, 3, 2023)
+print(f1 < f2)  # True
+```  
+5. **Colecciones y acceso a elementos**
+- \_\_len\_\_       -->	len(obj)	
+- \_\_getitem\_\_	 -->   obj[key]
+- \_\_setitem\_\_	  -->  obj[key] = value	
+- \_\_contains\_\_	  -->  item in obj	
+```python
+class ListaPersonalizada:
+    def __init__(self, *args):
+        self._datos = list(args)
+    
+    def __len__(self):
+        return len(self._datos)
+    
+    def __getitem__(self, index):
+        return self._datos[index]
+    
+    def __setitem__(self, index, value):
+        self._datos[index] = value
+    
+    def __contains__(self, item):
+        return item in self._datos
+
+lp = ListaPersonalizada(1, 2, 3)
+print(len(lp))      # 3
+print(lp[1])        # 2
+print(3 in lp)      # True
+```
+
+6. **Context Managers**
+- \_\_enter\_\_	Inicia el contexto
+- \_\_exit\_\_	Limpia el contexto (siempre se ejecuta, incluso con excepciones)
 
 ```python
-frutas = ['manzana', 'banana', 'cereza', 'aguacate']
-for fruta in frutas:
-    if fruta == 'cereza' :
-        continue
-    print(fruta)
+class GestorArchivo:
+    def __init__(self, nombre):
+        self.nombre = nombre
+    
+    def __enter__(self):
+        self.archivo = open(self.nombre, 'r')
+        return self.archivo
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.archivo.close()
 
-# Salida:
-
-# manzana
-# banana
-# aguacate
+with GestorArchivo('datos.txt') as f:
+    contenido = f.read()
+# El archivo se cierra automáticamente aquí
 ```
-Cuando la variable *fruta* toma el valor *cereza*, se salta a la siguiente iteración: por tanto 'cereza' no aparece por pantalla.
 
 
-### 4. Bucles anidados
-Hemos visto las dos estructuras de bucle, pero esto se puede hacer más complejo usando bucles anidados, donde insertamos un bucle dentro de otro bucle. Aunque esto es posible hacerlo, se recomienda no abusar de este tipo de anidadaciones, ni de usar muchos niveles de anidación (bucle dentro de bucle dentro de bucle dentro de bucle...) ya que hacen los programas más difíciles de entender, y por tanto de modificar y depurar.
+
+## 9. ¿Qué es un decorador de python?
+Un decorador es una función especial que modifica el comportamiento de otra función o clase sin cambiar su código fuente. Los decoradores permiten envolver una función dentro de otra, añadiendo funcionalidad antes o después de su ejecución: toma otra función como argumento, añade alguna funcionalidad a esta función y la retorna. Es una forma de metaprogramación que permite modificar o extender el comportamiento de funciones o métodos.
+### Características clave
+- **Función que envuelve a otra**  
+Un decorador es esencialmente un "envoltorio" para una función.
+- **Sintaxis especial**  
+Se utiliza el símbolo *@* seguido del nombre del decorador para aplicarlo a una función.
+- **Reutilización de código**  
+Permiten aplicar la misma modificación a múltiples funciones, evitando la repetición de código.
+- **Legibilidad**  
+Pueden mejorar la legibilidad del código al separar la lógica principal de la función de las funcionalidades adicionales.
+
+### Tipos de Decoradores
+1. **Decoradores de Funciones**
 ```python
-for n in range(4) :
-    for m in range(2 ):
-        print(f'{n} {m}')
-
-# Output:
-
-# 0 0
-# 0 1
-# 1 0
-# 1 1
-# 2 0
-# 2 1
-# 3 0
-# 3 1
-```
-
-En resumen, los bucles **for** y **while** son herramientas esenciales en Python para ejecutar bloques de código de forma reiterada. Una diferencia muy importante entre el bucle **for** y el **while** es que el bucle **for** se ejecuta sobre **todos** los elementos de un iterable (salvo que usemos la setencia **break**), mientras que el bucle **while** se ejecuta dependiendo de una condición. 
-
-
-## 3. ¿Qué es una lista por comprensión en Python?
-Una lista por comprensión en Python es una manera ágil y eficiente de crear nuevas listas a partir de iterables (una lista, tupla, string, rango, o set, u otro objeto iterable). Proporciona una sintaxis más compacta y legible que los bucles **for** tradicionales, para crear listas basadas en transformaciones o filtros aplicados a los elementos de un iterable.  Se usan cuando la trasformación o el filtro a aplicar se pueden expresar en una línea, es decir, no son excesivamente complejos. Si la trasformación a realizar no podemos expresarla en una sola línea, es mejor usar un bucle **for** para crear la nueva lista.  
-Sintaxis
-```python
-[expresión for elemento in iterable if condición]
-```
-- expresión: es una expresión que define la trasformación que queremos realizar para cada *elemento* del *iterable*.
-- elemento: representa el *elemento* del *iterable* que estamos tratando.
-- iterable: una lista, tupla, string, rango, o set (u otro objeto iterable).
-- condición: es opcional y representa la *condición* que debe cumplir el *elemento* para que se le aplique la *expresión*
-
-Ejemplo 1  
-*Queremos crear una una nueva lista que suma 5 a cada elemento de una lista original*
-```python
-lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-nueva_lista = [elemento + 5 for elemento in lista]
-print(cuadrados)   # Salida: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-```
-- expresión -> elemento + 5
-- elemento -> cada uno de los elementos de la lista original
-- iterable -> la *lista* [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-- condición -> no aplicada en este caso
-
-Ejemplo 2  
-*Creamos una una nueva lista con los elementos de la original en mayúsculas, solo si el elemento tiene más de 7 caracteres*
-```python
-lista = ['naranja', 'pera',' manzana', 'mandarina', 'melocotón', 'aguacate']
-nueva_lista = [elemento.upper() for elemento in lista if len(elemento) > 7]
-print(nueva_lista)   # Salida: [' MANZANA', 'MANDARINA', 'MELOCOTÓN', 'AGUACATE']
-```
-- expresión -> elemento.upper() convierte a mayúsculas un string
-- elemento -> cada uno de los elementos de la lista original
-- iterable -> la *lista* ['naranja', 'pera',' manzana', 'mandarina', 'melocotón', 'aguacate']
-- condición -> len(elemento) > 7  (sólo si el nº de caracteres de la palabra es mayor de 7)  
-
-En resumen, esta estructura nos permite crear listas a partir de otras listas, usando una sola línea de código, de forma muy compacta y eficiente. 
-
-
-## 4. ¿Qué es un argumento en Python?
-Un argumento en Python es un concepto que se usa relacionado con los métodos y las funciones. **Funciones** son bloques de código que encapsulamos y a las que les damos un nombre. De esta manera, podemos llamar a estos bloques para ejecutarlos en diferentes puntos de nuestra aplicación, sin tener que repetir ese código: a eso se le llama reutilización del código y nos permite construir aplicaciones más compactas y más fáciles de entender. Estas funciones pueden tener (de hecho, la mayor parte de las veces los tienen) **argumentos**, que nos permiten pasar a estos bloques encapsulados variables para que el bloque de código que contienen sea ejecutado con esos valores. Veámoslo con un ejemplo: vamos a definir una función sencilla que sume dos valores. 
-```python
-def funcion_suma(primer_sumando, segundo_sumando) :
-    suma = primer_sumando + segundo_sumando
-    return suma
-
-print(funcion_suma(45, 15))   # Salida: 60
-```
-En este caso, los **argumentos** de 'funcion_suma' son **primer_sumando** y **segundo_sumando** y se encierran entre paréntesis. Estos argumentos nos permiten pasar a la función cualquier valor que deseemos. De esta manera, podemos usar esta función en cualquier parte de nuestra aplicación y con cualquier par de valores. Esto nos da una enorme flexibilidad.
-
-### 1. Argumentos por posición o por nombre
-Cuando pasamos los argumentos a una función podemos hacerlo empleando dos métodos distintos.
-- **Por posición**. En este caso, al pasar los argumentos debemos asegurarnos que la posición en la que los pasamos a la función es la misma que en la definición. Veámoslo con un ejemplo.
-```python
-def datos_usuario(nombre, apellido) :
-    print(f'El nombre del usuario es {nombre} {apellido}')
-
-print(datos_usuario('Iñaki','Gómez'))  #Salida: 'El nombre del usuario es Iñaki Gómez' Uso correcto, hemos puesto cada elemento en su lugar
-print(datos_usuario('Gómez','Iñaki'))  #Salida: 'El nombre del usuario es Gómez Iñaki' Uso incorrecto, no hemos puesto cada elemento en su lugar
-```
-- **Por nombre**. En este caso, al pasar los argumentos ponemos explícitamente qué valor asignamos a cada argumento, indicándolo con el nombre con el que se ha definido la función. En este caso, el orden de los argumentos es irrelevante, y podemos ponerlos como queramos. Veámoslo con un ejemplo.
-```python
-def datos_usuario(nombre, apellido) :
-    print(f'El nombre del usuario es {nombre} {apellido}')
-
-print(datos_usuario(nombre = 'Iñaki', apellido = 'Gómez'))  #Salida: 'El nombre del usuario es Iñaki Gómez' Uso correcto.
-print(datos_usuario(apellido = 'Gómez', nombre = 'Iñaki'))  #Salida: 'El nombre del usuario es Iñaki Gómez' Uso correcto.
-```
-### 2. Argumentos por defecto  
-Como hemos mencionado, al crear una función definimos los argumentos (si es que los tiene) necesarios para ejecutar esa función. Y al utilizarla debemos dar valores a esos argumentos para que todo funcione correctamente. Pero puede darse el caso en no tengamos un valor para uno o varios de esos argumentos y en tal caso, al llamar a la función se generaría un error. Aquí es donde entran en juego los valores por defecto. 
-Los valores por defecto son valores que damos a los argumentos de una función al definirla, y son esos los valores que tomará la función al llamarla, si no le pasamos esos valores explícitamente. Veámoslo con un ejemplo.  
-*Creamos una función y asignamos valores por defecto a ambos argumentos, mediante la asignación =: en el caso de 'nombre' es 'Jhon' y en el caso de 'apellido' es 'Doe'*
-
-```python
-def datos_usuario(nombre = 'Jhon', apellido = 'Doe') :
-    print(f'El nombre del usuario es {nombre} {apellido}')
-
-print(datos_usuario())  #Salida: 'El nombre del usuario es Jhon Doe'
-print(datos_usuario(apellido = 'Gómez'))  #Salida: 'El nombre del usuario es Jhon Gómez. Ya que no hemos asignado un valor a 'nombre', usa 'Jhon' que es el valor por defecto
-print(datos_usuario(,'Gómez'))  #Salida: Se genera un error sintáctico
-```
-Es importante señalar que si no vamos a pasar el primer valor (dejamos el de defecto) debemos pasar los argumentos por nombre.  
-
-### 3. Desempaquetado de argumentos   
-El desempaquetado de argumentos se usa para definir funciones en las que no sabemos a priori cuántos argumentos vamos a recibir y por tanto, no podemos explicitarlos en el momento de su definición. El desempaquetado de argumentos es una técnica poderosa en Python que permite expandir secuencias y diccionarios al pasar argumentos a funciones.
-
-1. **Desempaquetado posicional**  
-El desempaquetado de argumentos posicionales permite pasar los elementos de un iterable (lista, tupla, etc.) como argumentos posicionales a una función.  
-
-Sintaxis
-```python
-def funcion(*args) :
-    bloque a ejecutar 
-```
-- args: es una expresión que representa los argumentos que desconocemos a priori. El '*' es necesario porque es quien indica que son una serie de argumentos que se deben desempaquetar.
-- bloque a ejecutar : el bloque de código que se ejecutará al invocar la función.  
-
-Ejemplo  
-
-```python
-def suma_totales(*args) :
-    total = 0
-    for argumento in args :
-        total += argumento
-    return total
-
-print(suma_totales(5,24,67,23))  # Salida: 119
-```
-En este ejemplo, pasamos a la función varios valores *integer* y la función se encarga mediante un bucle **for** sumarlos todos. No hemos definido en la función cuántos sumandos le vamos a pasar, por lo que podemos pasarle 5, 20 ó 1.000, y ella de encargará de desempaquetarlos y realizar la operación correctamente. Esto nos da unas posibilidades inmensas a la hora de definir funciones enormemente flexibles, en las que no sabemos a priori cuántos argumentos vamos a pasar.
-
-2. **Desempaquetado por clave**  
-El desempaquetado de argumentos de palabra clave permite pasar los pares clave-valor como argumentos de palabra clave a una función.  
-
-Sintaxis
-```python
-def funcion(**kwargs) :
-    bloque a ejecutar 
-```
-- kwargs: es una expresión que representa los argumentos que desconocemos a priori. Los argumentos son pares que serán trasformados a pares clave-valor. El '**' es necesario porque es quien indica que son una serie de argumentos que deberemos desmpaquetar por clave.
-- bloque a ejecutar : el bloque de código que se ejecutará al invocar la función.  
-
-Ejemplo  
-
-```python
-def listado(**kwargs) :
-    for argumento in kwargs.values() :
-        print(argumento)
-
-listado(nombre = 'Iñaki', apellido = 'Mendigutxia')
-
-# Salida:
-
-# Iñaki
-# Mendigutxia
-```
-
-
-
-3. **Desempaquetado por posición y clave**  
- También podemos definir funciones en las que empleemos ambos tipos de desempaquetado, por posición y por clave. Esto nos da aún más flexibilidad a la hora de definir funciones ya que podemos sumar las ventajas de ambas opciones simultáneamente en una misma función.
-
-Sintaxis
-```python
-def funcion(*args,**kwargs) :
-    bloque a ejecutar 
-```
-- args: es una expresión que representa los argumentos que desconocemos a priori. El '*' es necesario porque es quien indica que son una serie de argumentos que deberemos desempaquetar.
-- kwargs: es una expresión que representa los argumentos que desconocemos a priori. Los argumentos son pares que serán trasformados a pares clave-valor. El '**' es necesario porque es quien indica que son una serie de argumentos que deberemos desmpaquetar por clave.
-- bloque a ejecutar : el bloque de código que se ejecutará al invocar la función.  
-
-Ejemplo  
-
-```python
-def listado(*args, **kwargs) :
-    print(f"{' '.join(args)}, ")
-    for argumento in kwargs.values() :
-        print(argumento)
-
-listado('Buenos', 'días', nombre = 'Iñaki', apellido = 'Mendigutxia')
-
-# Salida:
-
-# Buenos días,
-# Iñaki
-# Mendigutxia
-```
-
-En resumen, los **argumentos** en Python (y en todos los lenguajes funcionales) son parte esencial de las **funciones**  que nos permiten pasar valores diferentes que dichas funciones que ejecutarán su código interno, generando una salida específica para esos valores de entrada. Esto nos permite una enorme flexibilidad, reduce el código de una aplicación ya que reutilizamos mlíneas en diferentes situaciones y hace que las aplicaciones sean mucha más fáciles de entender y de corregir errores. Tal co mo hemos visto, Python tiene diferentes opciones que se adaptan a multitud de situaciones, lo que hace que sea una herramienta de programación tan poderosa.
-
-
-## 5. ¿Qué es una función Lambda en Python?
-Una función lambda es una función especial que se define de forma sencilla en una sola línea y es anónima, aunque pueda ser asignada a una variable. Nos permite definir funciones sencillas y muy compactas.
-
-Características principales
-- Anónimas: no tienen un nombre asignado (aunque se pueden asignar a una variable).
-- De una sola línea: solo pueden contener una única expresión.
-- Pueden tener cualquier número de argumentos: al igual que las funciones regulares, las funciones lambda pueden aceptar cualquier número de argumentos.
-
-Sintaxis
-```python
-lambda argumentos : expresión
-```
-- lambda: palabra clave que indica la creación de una función lambda.
-- argumentos: una lista de argumentos separados por comas (puede estar vacía).
-- expresión: una única expresión que se evalúa y se retorna como resultado de la función.
-
-Ejemplo  
-*Vamos a crear una función lambda que sume 2 sumandos*
-```python
-suma = lambda sumando1, sumando2 : sumando1 + sumando2
-print(suma(45, 15))   # Salida: 60
-```
-- argumentos: sumando1, sumando2
-- expresión: sumando1 + sumando2  
-
-Como vemos, es la misma función que definimos en un punto anteriror, pero definida con un formato en una sola línea, mucho más compacto. Se recomiendan cuando la expresión es una operación sencilla que se puede expresar en una sola línea y al ser anónima no necesite usarse en otras partes de la aplicación. En nuestro ejemplo la hemos asignado a una variable y podríamos usarla en otra parte, pero no tiene por qué ser así.  
-Si el bloque de código de la función consta de varias líneas, o lo vamos a usar en otras partes del código, es mejor usar una función regular.
-
-
-
-## 6. ¿Qué es un paquete pip?
-
-Los paquetes pip son librerias desarrolladas por programadores que añaden funcionalidades a la base de Python. Cuando instalamos Python en una máquina viene con un conjunto básico de componentes (tipos de objetos, funciones, operadores, métodos, clases,...) que son los llamados objetos built-in. Pero con el tiempo, los desarrolladores de Python han ido desarrollando bibliotecas que aumentan enormemente las funcionalidades de Python. **PIP** es una aplicación de consola que nos permite gestionar los paquetes que necesitemos instalar en nuestra máquina para su uso. De esta manera, con el comando **pip** podemos instalar en nuestra máquina el paquete que necesitemos y así podemos usar sus funciones, métodos y clases sin tener que crearlos desde cero. Existen infinitos paquetes desarrollados por la comunidad Python para múltiples áreas: machine learning, ciencia de datos, representaciones gráficas, deep learning, tratamieto de textos, reconocimieto de caracteres,... Esta enorme aportación de la comunidad Python hace que este lenguaje sea uno de los más potentes y desarrollados.
-
-Sería una locura instalar todos los disponibles al existir cientos (si no miles de ellos) que ocuparían todo el disco duro de nuestro ordenador. El repositorio centralizado de paquetes Python se encuentra en la URL https://pypi.org/, donde podemos buscar el que se ajuste a nuestras necesidades. Por ese motivo cada programador instala y activa los que necesita para su trabajo, usando el comando **pip**.  
-
-Al instalar Python, si todo se instala correctamente, se debiera instalar la aplicación **pip** para la gestión de paquetes.
-
-Para instalar un paquete, éste se instalaría localmente en nuestra máquina. Debemos abrir una consola de Windows (mediante PowerShell o command) y ejecutar el comando:
-```
-pip install nombre_del _paquete
-```
-Otra manera de usar **pip** es:
-```
-python -m pip nombre_del_paquete
-```
-
-Por ejemplo, para instalar SQLAlchemy, que es un paquete para gestionar bases de datos SQL, usaríamos el siguiente comando en la consola de Windows:  
-```
-pip install sqlalchemy
-```
-
-
-Los commandos más usuales de pip son los siguientes:
-
-Instalar un paquete
-```
-pip install package_name
-```
-
-Instalar una versión específica
-```
-pip install package_name==1.0.0
-```
-Actualizar un paquete
-```
-pip install --upgrade package_name
-```
-
-Desinstalar un paquete
-```
-pip uninstall package_name
-```
-
-Listar los paquetes instalados
-```
-pip list
-```
-
-Mostrar los detalles de un paquete
-```
-pip show package_name
-```
-
-Para facilitar la tarea de migrar las aplicaciones de Python, podemos guardar en un archivo de texto todos los paquetes usados en un desarrollo en particular. De esta manera si migramos la aplicación a otra máquina podemos instalar los paquetes necesarios sin tener que instalarlos de uno en uno, con el ahorro de tiempo que ello supone, sobre todo si el proyecto usa muchos paquetes o librerías distintas. Podemos incluir comentarios (usando #) y estructurarlo en bloques para hacer más fácil su comprensión a los humanos. El archivo que generamos lo llamaremos *requirements.txt* por convenio.
-
-Ejemplo de archivo requirements.txt (debe ser formato de texto plano)
-
-
-```
-# Paquetes principales
-requests==2.31.0  # HTTP para humanos
-flask>=2.0.0     # Microframework web
-django>=3.2,<4.0  # Framework web full-stack
-
-# Ciencia de datos
-numpy
-pandas~=1.5.0
-
-# Desarrollo
-black            # Formateador de código
-pytest==7.4.0    # Testing
-
-# Desde un repositorio Git
-git+https://github.com/user/repo.git@branch#egg=nombre_paquete
+def decorador(funcion):
+    def wrapper():
+        print("Antes de llamar a la función.")
+        funcion()
+        print("Después de llamar a la función.")
+    return wrapper
+
+@decorador
+def decir_hola():
+    print("¡Hola!")
+
+decir_hola()
+
+# Salida
+# Antes de llamar a la función.
+# ¡Hola!
+# Después de llamar a la función.
 ```  
 
-Una vez creado para instalar esas librerías en la nueva máquina debemos usar el comando:
+En este caso, *decorador* es el decorador, que envuelve la función *decir_hola* y la toma como argumento. La función *wrapper* es la función que añade funcionalidad a *decir_hola*. La línea *@decorador* justo delnte de *decir_hola* indica que cuando llamemos a esa función, debemos ejecutar *wrapper* con la función *decir_hola* como argumento. De esta manera se ejecuta *decir_hola* pero dentro de la función *wrapper*, es decir hemos aññadido funcionalidad a *decir_hola*, pero no la hemos modificado.  
+
+2. **Decoradores con Argumentos**  
+```python
+def repetir(n):
+    def decorador(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(n):
+                func(*args, **kwargs)
+        return wrapper
+    return decorador
+
+@repetir(3)
+def decir(mensaje):
+    print(mensaje)
+
+decir("Python es genial")
+
+# Salida:
+
+# Python es genial
+# Python es genial
+# Python es genial
 ```
-pip install -r requirements.txt
+3. **Decoradores de Clases**  
+```python
+def decorador_clase(cls):
+    class NuevaClase(cls):
+        def nuevo_metodo(self):
+            return "Método añadido por el decorador"
+    return NuevaClase
+
+@decorador_clase
+class MiClase:
+    pass
+
+obj = MiClase()
+print(obj.nuevo_metodo())  # "Método añadido por el decorador"
+```
+## Decoradores Incorporados (Built-in)
+
+- @staticmethod -->	Define métodos estáticos (sin self)
+- @classmethod	-->	Define métodos de clase (recibe cls)
+- @property	-->	Define getters como propiedades
+- @functools.lru_cache	-->	Memorización (cache) de resultados  
+
+Ejemplo con @property, para definir *getters* (para obtener el valor de atributos del objeto) y *setters* (para cambiar el valor de atributos del objeto). Con estos decoradors conseguimos leer y actualizar atributos protegidos de forma indirecta sin acceder directamente a ellos.
+```python
+
+class Persona:
+    def __init__(self, nombre, apellido):
+        self._nombre = nombre
+        self._apellido = apellido
+    
+    @property
+    def apellido(self):
+        return self._apellido
+    
+    @apellido.setter
+    def apellido(self, valor):
+        self._apellido = valor
+
+mi_primo = Persona('Juan', 'Madrid')
+print(mi_primo.apellido)            # Salida: Madrid (usa el getter)
+mi_primo.apellido = 'Madridejos'    # Usa el setter para cambiar el valor del atributo
 ```
 
-Si queremos generar de forma automática el archivo requirements.txt, debemos ejecutar el siguiente comando en la máqueina en la que tenemos desarrollada la aplicación:
-```
-pip freeze > requirements.txt
-```
+## Estructura General de un Decorador
+```python
 
-Actualizar el mismo gestor de paqeutes **pip**
+def mi_decorador(func):
+    def wrapper(*args, **kwargs):
+        # Código a ejecutar ANTES de llamar a la función
+        resultado = func(*args, **kwargs)  # Llamada a la función original
+        # Código a ejecutar DESPUÉS de llamar a la función
+        return resultado
+    return wrapper
 ```
-pip install --upgrade pip
-```
+### Casos de uso comunes
+- **Logging:** registrar información sobre la ejecución de una función.
+- **Control de acceso:** Verificar si un usuario tiene permisos para ejecutar una función.
+- **Medición del tiempo de ejecución:** calcular cuánto tiempo tarda en ejecutarse una función.
+- **Validación de argumentos:** verificar si los argumentos de una función cumplen ciertos criterios.
+- **Memorización (caching):** almacenar los resultados de una función para evitar recalcularlos en llamadas futuras con los mismos argumentos.
 
+En resumen, podemos añadir funcionalidad a funciones y clases ya definidas sin tener que modificarlas, añadiéndoles un decorador. Esto nos facilita la reutilización de código, además de poder devolver a la función original a su estado normal de forma muy sencilla, eliminando o comentando el decorador.
